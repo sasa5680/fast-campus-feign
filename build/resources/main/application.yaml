@@ -1,0 +1,13 @@
+feign:
+  url:
+    prefix: http://localhost:8080/target_server # feign client?? ??? url
+  client:
+    config:
+      default:
+        connect-timeout: 1000
+        read-timeout: 3000
+        logger-level: none
+      demo-client:
+        connect-timeout: 1000
+        read-timeout: 10000
+        logger-level: headers
