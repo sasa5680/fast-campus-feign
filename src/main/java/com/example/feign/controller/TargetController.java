@@ -1,5 +1,6 @@
 package com.example.feign.controller;
 
+import com.example.feign.feign.common.dto.BaseRequestInfo;
 import com.example.feign.feign.common.dto.BaseResponseInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,15 @@ public class TargetController {
                 .name(name)
                 .age(age)
                 .build();
-
-
     }
 
+    @PostMapping("/post")
+    public BaseRequestInfo demoPost(@RequestHeader("CustomHeaderName") String customHeader,
+                                    @RequestBody BaseRequestInfo body) {
+        return BaseRequestInfo.builder()
+                .header("header")
+                .age(body.getAge())
+                .name(body.getName())
+                .build();
+    }
 }
